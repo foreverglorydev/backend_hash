@@ -23,6 +23,8 @@ app.use(cors({origin: "http://localhost:3000"}));
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
 
+let whitelistusers = ['0x4F56Bc08d5D75eD0252d6de31896a9F4f4d6DBc7', '0xDd9346E5b40892053eb706A046D142De1e4cCc26'];
+
 app.post("/api", (req, res) => {
 
   let address = req.body.account;
