@@ -1,5 +1,5 @@
 // server/index.js
-
+const https = require('https');
 const express = require("express");
 const keccak256 = require('keccak256');
 const cors = require("cors");
@@ -9,11 +9,19 @@ const fs = require('fs');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+
+const options = {
+  key: fs.readFileSync('key.pem'),
+  cert: fs.readFileSync('cert.pem')
+};
+
+
 // app.use(cors({origin: "http://localhost:3000"}));
 app.use(cors({origin: "https://nft-frontend-alpha.vercel.app"}));
 
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
+
 
 
 app.post("/api", (req, res) =>  {
@@ -47,10 +55,10 @@ app.post("/api", (req, res) =>  {
   });
 });
 
+var httpsServer = https.createServer(options, app);
 
-
-app.listen(PORT, () => {
-  console.log(`Server listening on ${PORT}`);
-});
+httpsServer.listen(PORT, () => {
+    console.log(`Server listening on ${PORT}`);
+  });
 
 
