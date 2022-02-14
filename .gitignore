@@ -20,6 +20,9 @@ uploads/receipts/
 # Log files
 *.log
 
+#pem files
+*.pem
+
 # Package files
 *.jar
 
