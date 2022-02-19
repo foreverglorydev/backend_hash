@@ -55,6 +55,12 @@ app.post("/api", (req, res) =>  {
   });
 });
 
+
+
+app.get("/test", (req, res) =>  {
+    res.send("This is address and port test!");
+});
+
 var httpsServer = https.createServer(options, app);
 
 httpsServer.listen(PORT, () => {
