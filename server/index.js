@@ -7,7 +7,7 @@ const formidable = require("formidable");
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 80;
 
 
 const options = {
